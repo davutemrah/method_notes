@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 5 be careful | R Programming Notes for Data Science</title>
+<meta name="author" content="dea">
+<meta name="description" content="TRUE &amp;&amp; c(TRUE, FALSE, FALSE) ## [1] TRUE In this case, the left operand is only evaluated with the first member of the right operand (the vector). The rest of the elements in the vector aren’t...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Chapter 5 be careful | R Programming Notes for Data Science">
+<meta property="og:type" content="book">
+<meta property="og:description" content="TRUE &amp;&amp; c(TRUE, FALSE, FALSE) ## [1] TRUE In this case, the left operand is only evaluated with the first member of the right operand (the vector). The rest of the elements in the vector aren’t...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 5 be careful | R Programming Notes for Data Science">
+<meta name="twitter:description" content="TRUE &amp;&amp; c(TRUE, FALSE, FALSE) ## [1] TRUE In this case, the left operand is only evaluated with the first member of the right operand (the vector). The rest of the elements in the vector aren’t...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS -->
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">R Programming Notes for Data Science</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Acknowledgement</a></li>
+<li><a class="" href="r-programming.html"><span class="header-section-number">2</span> R Programming</a></li>
+<li><a class="" href="create-sequence-of-numbers.html"><span class="header-section-number">3</span> Create sequence of numbers</a></li>
+<li><a class="" href="logic-statements.html"><span class="header-section-number">4</span> Logic statements</a></li>
+<li><a class="active" href="be-careful.html"><span class="header-section-number">5</span> be careful</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="be-careful" class="section level1" number="5">
+<h1>
+<span class="header-section-number">5</span> be careful<a class="anchor" aria-label="anchor" href="#be-careful"><i class="fas fa-link"></i></a>
+</h1>
+<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="cn">TRUE</span> <span class="op">&amp;&amp;</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>In this case, the left operand is only evaluated with the first member
+of the right operand (the vector). The rest of the elements in the
+vector aren’t evaluated at all in this expression.</p>
+<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="cn">TRUE</span> <span class="op">|</span> <span class="cn">FALSE</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="cn">TRUE</span> <span class="op">|</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] TRUE TRUE TRUE</code></pre>
+<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="cn">TRUE</span> <span class="op">||</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="cn">FALSE</span> <span class="op">&amp;&amp;</span> <span class="fl">6</span> <span class="op">&gt;=</span> <span class="fl">6</span> <span class="op">||</span> <span class="fl">7</span> <span class="op">&gt;=</span> <span class="fl">8</span> <span class="op">||</span> <span class="fl">50</span> <span class="op">&lt;=</span> <span class="fl">49.5</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="op">!</span><span class="op">(</span><span class="fl">8</span> <span class="op">&gt;</span> <span class="fl">4</span><span class="op">)</span> <span class="op">||</span>  <span class="fl">5</span> <span class="op">==</span> <span class="fl">5.0</span> <span class="op">&amp;&amp;</span> <span class="fl">7.8</span> <span class="op">&gt;=</span> <span class="fl">7.79</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="cn">TRUE</span> <span class="op">&amp;&amp;</span> <span class="cn">FALSE</span> <span class="op">||</span> <span class="fl">9</span> <span class="op">&gt;=</span> <span class="fl">4</span> <span class="op">&amp;&amp;</span> <span class="fl">3</span> <span class="op">&lt;</span> <span class="fl">6</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fl">99.99</span> <span class="op">&gt;</span> <span class="fl">100</span> <span class="op">||</span> <span class="fl">45</span> <span class="op">&lt;</span> <span class="fl">7.3</span> <span class="op">||</span> <span class="fl">4</span> <span class="op">!=</span> <span class="fl">4.0</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Logic.html">isTRUE</a></span><span class="op">(</span><span class="fl">6</span><span class="op">&gt;</span><span class="fl">4</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb136"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="st">'twins'</span>, <span class="st">'twins'</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>The xor() function stands for exclusive OR. If one argument evaluates to TRUE and one argument evaluates to FALSE, then this function will return TRUE, otherwise it will return FALSE.</p>
+<div class="sourceCode" id="cb138"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Logic.html">xor</a></span><span class="op">(</span><span class="fl">5</span> <span class="op">==</span> <span class="fl">6</span>, <span class="op">!</span><span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb140"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Logic.html">xor</a></span><span class="op">(</span><span class="cn">T</span>, <span class="cn">T</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb142"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Logic.html">xor</a></span><span class="op">(</span><span class="cn">F</span>, <span class="cn">F</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb144"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Logic.html">xor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="va">xor</span>, <span class="st">'xor'</span><span class="op">)</span>, <span class="fl">7</span> <span class="op">==</span> <span class="fl">7.0</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb146"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Logic.html">xor</a></span><span class="op">(</span><span class="fl">4</span> <span class="op">&gt;=</span> <span class="fl">9</span>, <span class="fl">8</span> <span class="op">!=</span> <span class="fl">8.0</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb148"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ints</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ints</span> <span class="op">&gt;</span> <span class="fl">5</span></code></pre></div>
+<pre><code>##  [1] FALSE  TRUE  TRUE FALSE FALSE  TRUE FALSE  TRUE  TRUE FALSE</code></pre>
+<p>The which() function takes a logical vector as an argument and returns the indices of the vector that are TRUE.</p>
+<div class="sourceCode" id="cb151"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 1 3</code></pre>
+<div class="sourceCode" id="cb153"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">ints</span><span class="op">&gt;</span><span class="fl">7</span>
+
+<span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 2 6 8</code></pre>
+<p>The any() function will return TRUE if one or more of the elements in the logical vector is TRUE.</p>
+<div class="sourceCode" id="cb155"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/any.html">any</a></span><span class="op">(</span><span class="va">ints</span><span class="op">&lt;</span><span class="fl">0</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<p>The all() function will return TRUE if every element in the logical vector is TRUE.</p>
+<div class="sourceCode" id="cb157"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="va">ints</span><span class="op">&gt;</span><span class="fl">0</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb159"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/any.html">any</a></span><span class="op">(</span><span class="va">ints</span> <span class="op">==</span> <span class="fl">10</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb161"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="logic-statements.html"><span class="header-section-number">4</span> Logic statements</a></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav"><li><a class="nav-link" href="#be-careful"><span class="header-section-number">5</span> be careful</a></li></ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>R Programming Notes for Data Science</strong>" was written by dea. It was last built on 2021-12-30.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

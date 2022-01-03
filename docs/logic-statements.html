@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 4 Logic statements | R Programming Notes for Data Science</title>
+<meta name="author" content="dea">
+<meta name="description" content="TRUE vs FALSE TRUE == TRUE ## [1] TRUE (FALSE == TRUE) == FALSE ## [1] TRUE 6==7 ## [1] FALSE 6&lt;=6 ## [1] TRUE 4 != 5 ## [1] TRUE !(5 == 71) ## [1] TRUE TRUE &amp; TRUE ## [1] TRUE FALSE &amp; FALSE ##...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Chapter 4 Logic statements | R Programming Notes for Data Science">
+<meta property="og:type" content="book">
+<meta property="og:description" content="TRUE vs FALSE TRUE == TRUE ## [1] TRUE (FALSE == TRUE) == FALSE ## [1] TRUE 6==7 ## [1] FALSE 6&lt;=6 ## [1] TRUE 4 != 5 ## [1] TRUE !(5 == 71) ## [1] TRUE TRUE &amp; TRUE ## [1] TRUE FALSE &amp; FALSE ##...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 4 Logic statements | R Programming Notes for Data Science">
+<meta name="twitter:description" content="TRUE vs FALSE TRUE == TRUE ## [1] TRUE (FALSE == TRUE) == FALSE ## [1] TRUE 6==7 ## [1] FALSE 6&lt;=6 ## [1] TRUE 4 != 5 ## [1] TRUE !(5 == 71) ## [1] TRUE TRUE &amp; TRUE ## [1] TRUE FALSE &amp; FALSE ##...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS -->
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">R Programming Notes for Data Science</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Acknowledgement</a></li>
+<li><a class="" href="r-programming.html"><span class="header-section-number">2</span> R Programming</a></li>
+<li><a class="" href="create-sequence-of-numbers.html"><span class="header-section-number">3</span> Create sequence of numbers</a></li>
+<li><a class="active" href="logic-statements.html"><span class="header-section-number">4</span> Logic statements</a></li>
+<li><a class="" href="be-careful.html"><span class="header-section-number">5</span> be careful</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="logic-statements" class="section level1" number="4">
+<h1>
+<span class="header-section-number">4</span> Logic statements<a class="anchor" aria-label="anchor" href="#logic-statements"><i class="fas fa-link"></i></a>
+</h1>
+<p>TRUE vs FALSE</p>
+<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="cn">TRUE</span> <span class="op">==</span> <span class="cn">TRUE</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="op">(</span><span class="cn">FALSE</span> <span class="op">==</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">==</span> <span class="cn">FALSE</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fl">6</span><span class="op">==</span><span class="fl">7</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fl">6</span><span class="op">&lt;=</span><span class="fl">6</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fl">4</span> <span class="op">!=</span> <span class="fl">5</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="op">!</span><span class="op">(</span><span class="fl">5</span> <span class="op">==</span> <span class="fl">71</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="cn">TRUE</span> <span class="op">&amp;</span> <span class="cn">TRUE</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="cn">FALSE</span> <span class="op">&amp;</span> <span class="cn">FALSE</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="cn">TRUE</span> <span class="op">&amp;</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1]  TRUE FALSE FALSE</code></pre>
+<p>equivalent statement as</p>
+<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span><span class="op">)</span> <span class="op">&amp;</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1]  TRUE FALSE FALSE</code></pre>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="create-sequence-of-numbers.html"><span class="header-section-number">3</span> Create sequence of numbers</a></div>
+<div class="next"><a href="be-careful.html"><span class="header-section-number">5</span> be careful</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav"><li><a class="nav-link" href="#logic-statements"><span class="header-section-number">4</span> Logic statements</a></li></ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>R Programming Notes for Data Science</strong>" was written by dea. It was last built on 2021-12-30.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

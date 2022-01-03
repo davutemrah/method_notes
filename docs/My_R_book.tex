@@ -1,0 +1,1150 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{book}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={R Programming Notes for Data Science},
+  pdfauthor={dea},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\usepackage{booktabs}
+\usepackage{amsthm}
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip=8pt plus 2pt minus 4pt
+  \thm@postskip=\thm@preskip
+}
+\makeatother
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{natbib}
+\bibliographystyle{apalike}
+
+\title{R Programming Notes for Data Science}
+\author{dea}
+\date{2021-12-30}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\hypertarget{acknowledgement}{%
+\chapter{Acknowledgement}\label{acknowledgement}}
+
+I have been compiling notes and tips on R programming from everywhere. Most of these notes coming from Data Science Specialization Course from Courseara.
+
+\hypertarget{r-programming}{%
+\chapter{R Programming}\label{r-programming}}
+
+R is a functional programming language. It is most popular among academia and Data Sciencetists.
+
+\hypertarget{general-information}{%
+\section{General Information}\label{general-information}}
+
+Cleaning the environment
+
+\begin{verbatim}
+rm(list = ls())
+\end{verbatim}
+
+Installing a package
+
+\begin{verbatim}
+install.packages("ggplot2")  # install
+detach(ggplot2, unload = TRUE)  # removing the library 
+\end{verbatim}
+
+Browsing help on packages
+
+\begin{verbatim}
+browseVignettes("ggplot2")
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{wd }\OtherTok{\textless{}{-}} \FunctionTok{getwd}\NormalTok{()}
+\NormalTok{wd}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "/Users/d842a922/Desktop/R/_my_R_book"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# listing environment objects}
+\FunctionTok{ls}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "wd"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# listing files in the working directory}
+\NormalTok{files }\OtherTok{\textless{}{-}} \FunctionTok{list.files}\NormalTok{()}
+\FunctionTok{head}\NormalTok{(files)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "_book"           "_bookdown_files" "_bookdown.yml"   "_build.sh"      
+## [5] "_deploy.sh"      "_my_R_book"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# listing files in the working directory}
+\NormalTok{files2 }\OtherTok{\textless{}{-}} \FunctionTok{dir}\NormalTok{()}
+\FunctionTok{head}\NormalTok{(files2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "_book"           "_bookdown_files" "_bookdown.yml"   "_build.sh"      
+## [5] "_deploy.sh"      "_my_R_book"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dir}\NormalTok{( }\AttributeTok{pattern =} \StringTok{"\^{}L"}\NormalTok{, }\AttributeTok{full.names =}\NormalTok{ F, }\AttributeTok{ignore.case =}\NormalTok{ T )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{old.dir }\OtherTok{\textless{}{-}} \FunctionTok{getwd}\NormalTok{()}
+
+\CommentTok{\# creating a folder in the directory}
+\FunctionTok{dir.create}\NormalTok{(}\StringTok{"testdir"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{setwd}\NormalTok{(}\StringTok{"testdir"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#create a file}
+\FunctionTok{file.create}\NormalTok{(}\StringTok{"testdir/mytest.R"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{file.exists}\NormalTok{(}\StringTok{"testdir/mytest.R"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{file.info}\NormalTok{(}\StringTok{"testdir/mytest.R"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# to list files in path}
+\NormalTok{myfiles }\OtherTok{\textless{}{-}} \FunctionTok{list.files}\NormalTok{(}\AttributeTok{path=}\StringTok{"testdir"}\NormalTok{, }\AttributeTok{pattern =} \StringTok{"[2]"}\NormalTok{)}
+\FunctionTok{head}\NormalTok{(myfiles)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#rename filename from to}
+\FunctionTok{file.rename}\NormalTok{(}\StringTok{"testdir/mytest.R"}\NormalTok{, }\StringTok{"testdir/mytest4.R"}\NormalTok{)}
+
+\FunctionTok{list.files}\NormalTok{(}\AttributeTok{path=}\StringTok{"testdir"}\NormalTok{, }\AttributeTok{pattern =} \StringTok{"[4]"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# interactive}
+\NormalTok{ file1 }\OtherTok{\textless{}{-}} \FunctionTok{file.choose}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# copy file from to}
+\FunctionTok{file.copy}\NormalTok{(}\StringTok{"testdir/mytest2.R"}\NormalTok{, }\StringTok{"testdir/mytest3.R"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{myfiles}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{class}\NormalTok{(myfiles)   }\CommentTok{\# character vector}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{myfiles[}\DecValTok{1}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{setwd}\NormalTok{(}\StringTok{"testdir"}\NormalTok{)}
+
+\FunctionTok{file.copy}\NormalTok{(myfiles[}\DecValTok{1}\NormalTok{], }\StringTok{"deneme2.xlsx"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# assign a name to a file path (exist or not)}
+\NormalTok{path1 }\OtherTok{\textless{}{-}} \FunctionTok{file.path}\NormalTok{(}\StringTok{"mytest3.R"}\NormalTok{)}
+
+\NormalTok{path1}
+\end{Highlighting}
+\end{Shaded}
+
+directory creation: testdir/deneme3
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dir.create}\NormalTok{(}\FunctionTok{file.path}\NormalTok{(}\StringTok{"testdir"}\NormalTok{, }\StringTok{"deneme3"}\NormalTok{), }\AttributeTok{recursive =} \ConstantTok{TRUE}\NormalTok{ )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# assign a name to a folder path (olmak zorunda degiller)}
+\NormalTok{abc }\OtherTok{\textless{}{-}} \FunctionTok{file.path}\NormalTok{(}\StringTok{"testdir"}\NormalTok{, }\StringTok{"deneme"}\NormalTok{)}
+\NormalTok{abc}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{double colon}
+
+There may be multiple functions with the same name in multiple packages. The double colon operator allows you to specify the specific function you want:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dplyr}\SpecialCharTok{::}\FunctionTok{filter}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{str}\NormalTok{(file.path)}
+\FunctionTok{args}\NormalTok{((file.path))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# then you can use variable names directly }
+
+\FunctionTok{attach}\NormalTok{(mtcars)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{create-sequence-of-numbers}{%
+\chapter{Create sequence of numbers}\label{create-sequence-of-numbers}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\AttributeTok{from =} \DecValTok{5}\NormalTok{, }\AttributeTok{to =} \DecValTok{14}\NormalTok{, }\AttributeTok{by =} \DecValTok{2}\NormalTok{)}
+\NormalTok{a}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  5  7  9 11 13
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# generates integer sequence of length(along.with)}
+\FunctionTok{seq}\NormalTok{(}\AttributeTok{along.with =} \DecValTok{1}\SpecialCharTok{:}\DecValTok{12}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]  1  2  3  4  5  6  7  8  9 10 11 12
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{seq\_along}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{15}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{seq}\NormalTok{(}\AttributeTok{length.out =} \DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 2 3 4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{seq\_len}\NormalTok{(}\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]  1  2  3  4  5  6  7  8  9 10
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a }\OtherTok{=} \FunctionTok{seq}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{20}\NormalTok{)}
+\NormalTok{b }\OtherTok{=} \FunctionTok{seq}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{30}\NormalTok{, }\AttributeTok{by =}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{in}{%
+\subsection{-- \%in\%}\label{in}}
+
+This creates a logical vector, where testing each element in vector ``a''
+if ever matches any element in vector ``b''
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{c }\OtherTok{\textless{}{-}}\NormalTok{ a }\SpecialCharTok{\%in\%}\NormalTok{ b}
+\NormalTok{c}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE
+\end{verbatim}
+
+\hypertarget{which}{%
+\subsection{which()}\label{which}}
+
+which(x, arr.ind = FALSE, useNames = TRUE)
+
+input a logical vector returns location index of true values
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{which}\NormalTok{(c)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  1  3  5  7  9 11
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{d }\OtherTok{\textless{}{-}}\NormalTok{ LETTERS[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{]}
+\NormalTok{d}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "A" "B" "C" "D" "E" "F" "G" "H" "I" "J"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{e }\OtherTok{\textless{}{-}}\NormalTok{ LETTERS[}\DecValTok{5}\SpecialCharTok{:}\DecValTok{10}\NormalTok{]}
+\NormalTok{e}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "E" "F" "G" "H" "I" "J"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{d }\SpecialCharTok{\%in\%}\NormalTok{ e}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{which}\NormalTok{(d }\SpecialCharTok{\%in\%}\NormalTok{ e)   }\DocumentationTok{\#\# location of TRUE values of vector d (matches vector e)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  5  6  7  8  9 10
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"c"}\NormalTok{, }\StringTok{"d"}\NormalTok{, }\StringTok{"e"}\NormalTok{, }\StringTok{"k"}\NormalTok{, }\StringTok{"l"}\NormalTok{, }\StringTok{"m"}\NormalTok{)}
+\NormalTok{h }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"b"}\NormalTok{, }\StringTok{"c"}\NormalTok{, }\StringTok{"d"}\NormalTok{, }\StringTok{"e"}\NormalTok{, }\StringTok{"d"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{i }\OtherTok{\textless{}{-}}\NormalTok{ g }\SpecialCharTok{\%in\%}\NormalTok{ h}
+\NormalTok{i}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  TRUE  TRUE  TRUE FALSE FALSE FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{which}\NormalTok{(g }\SpecialCharTok{==}\NormalTok{ h)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## integer(0)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# subsetting property}
+
+\NormalTok{g[g }\SpecialCharTok{\%in\%}\NormalTok{ h]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "c" "d" "e"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{which}\NormalTok{( (}\DecValTok{1}\SpecialCharTok{:}\DecValTok{12}\NormalTok{) }\SpecialCharTok{\%\%} \DecValTok{2} \SpecialCharTok{==} \DecValTok{0}\NormalTok{, }\AttributeTok{arr.ind =}\NormalTok{ F)   }\DocumentationTok{\#\# location in the array (1:12)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  2  4  6  8 10 12
+\end{verbatim}
+
+\hypertarget{where-is-the-min-max-first-truefalse}{%
+\subsection{Where is the min, max, first true/false?}\label{where-is-the-min-max-first-truefalse}}
+
+which.min()
+which.max()
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{9}\NormalTok{, }\ConstantTok{NA}\NormalTok{, }\StringTok{"4"}\NormalTok{)}
+\NormalTok{a}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "2" "4" "1" "7" "9" "1" "3" "5" "9" NA  "4"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{which.min}\NormalTok{(a }\SpecialCharTok{\textgreater{}} \DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{which.max}\NormalTok{(a)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a[}\FunctionTok{which.max}\NormalTok{(a)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "9"
+\end{verbatim}
+
+\texttt{match(a,\ b)}
+
+match: An integer vector giving the position in table of the first match if there is a match, otherwise nomatch.
+
+min(which(x == a))
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a }\OtherTok{=} \DecValTok{1}\SpecialCharTok{:}\DecValTok{15}
+\NormalTok{b }\OtherTok{=} \FunctionTok{seq}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{20}\NormalTok{, }\AttributeTok{by=}\DecValTok{3}\NormalTok{)}
+
+\FunctionTok{match}\NormalTok{(a, b)  }\DocumentationTok{\#\# returns location of true values of vector a}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]  1 NA NA  2 NA NA  3 NA NA  4 NA NA  5 NA NA
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a }\SpecialCharTok{\%in\%}\NormalTok{ b}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]  TRUE FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE
+## [13]  TRUE FALSE FALSE
+\end{verbatim}
+
+\texttt{dataframe}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df }\OtherTok{\textless{}{-}}\NormalTok{ cars}
+\FunctionTok{head}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   speed dist
+## 1     4    2
+## 2     4   10
+## 3     7    4
+## 4     7   22
+## 5     8   16
+## 6     9   10
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# test if value 5 in speed column}
+\DecValTok{5} \SpecialCharTok{\%in\%}\NormalTok{ df}\SpecialCharTok{$}\NormalTok{speed}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# create a dataframe}
+\NormalTok{df2 }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{Type =} \FunctionTok{c}\NormalTok{(}\StringTok{"fruit"}\NormalTok{, }\StringTok{"fruit"}\NormalTok{,}\StringTok{"fruit"}\NormalTok{, }\StringTok{"veggie"}\NormalTok{,}\StringTok{"veggie"}\NormalTok{),}
+                  \AttributeTok{Name =} \FunctionTok{c}\NormalTok{(}\StringTok{"red apple"}\NormalTok{, }\StringTok{"green apple"}\NormalTok{, }\StringTok{"red apple"}\NormalTok{, }\StringTok{"green apple"}\NormalTok{ ,}\StringTok{"red apple"}\NormalTok{), }\AttributeTok{Color =} \FunctionTok{c}\NormalTok{(}\ConstantTok{NA}\NormalTok{, }\StringTok{"red"}\NormalTok{, }\StringTok{"blue"}\NormalTok{, }\StringTok{"yellow"}\NormalTok{, }\StringTok{"red"}\NormalTok{))}
+
+\NormalTok{df2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     Type        Name  Color
+## 1  fruit   red apple   <NA>
+## 2  fruit green apple    red
+## 3  fruit   red apple   blue
+## 4 veggie green apple yellow
+## 5 veggie   red apple    red
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df2 }\OtherTok{\textless{}{-}} \FunctionTok{within}\NormalTok{(df2, }
+\NormalTok{              \{ newcol }\OtherTok{=} \StringTok{"No"}
+\NormalTok{              newcol[Type }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"fruit"}\NormalTok{)] }\OtherTok{=} \StringTok{"No"}
+\NormalTok{              newcol[Name }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{( }\StringTok{"green apple"}\NormalTok{)] }\OtherTok{=} \StringTok{"Yes"}
+\NormalTok{\})}
+
+\FunctionTok{head}\NormalTok{(df2, }\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Type        Name Color newcol
+## 1 fruit   red apple  <NA>     No
+## 2 fruit green apple   red    Yes
+## 3 fruit   red apple  blue     No
+\end{verbatim}
+
+\texttt{subsetting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(dplyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df3 }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"home"}\NormalTok{, }\StringTok{"veggie"}\NormalTok{, }\StringTok{"fruit"}\NormalTok{)}
+
+\NormalTok{df2 }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{filter}\NormalTok{(df2}\SpecialCharTok{$}\NormalTok{Type }\SpecialCharTok{\%in\%}\NormalTok{ df3)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     Type        Name  Color newcol
+## 1  fruit   red apple   <NA>     No
+## 2  fruit green apple    red    Yes
+## 3  fruit   red apple   blue     No
+## 4 veggie green apple yellow    Yes
+## 5 veggie   red apple    red   <NA>
+\end{verbatim}
+
+\texttt{dropping\ columns}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df2[, }\SpecialCharTok{!}\NormalTok{(}\FunctionTok{colnames}\NormalTok{(df2) }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"Name"}\NormalTok{, }\StringTok{"Color"}\NormalTok{)) ]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     Type newcol
+## 1  fruit     No
+## 2  fruit    Yes
+## 3  fruit     No
+## 4 veggie    Yes
+## 5 veggie   <NA>
+\end{verbatim}
+
+\texttt{selecting\ columns}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df2[, (}\FunctionTok{colnames}\NormalTok{(df2) }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"Name"}\NormalTok{, }\StringTok{"Color"}\NormalTok{)) ]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##          Name  Color
+## 1   red apple   <NA>
+## 2 green apple    red
+## 3   red apple   blue
+## 4 green apple yellow
+## 5   red apple    red
+\end{verbatim}
+
+\texttt{creating\ custom\ operator}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\StringTok{\textasciigrave{}}\AttributeTok{\%notin\%}\StringTok{\textasciigrave{}} \OtherTok{\textless{}{-}} \FunctionTok{Negate}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{\%in\%}\StringTok{\textasciigrave{}}\NormalTok{)}
+
+\NormalTok{numbs }\OtherTok{\textless{}{-}} \FunctionTok{rep}\NormalTok{(}\FunctionTok{seq}\NormalTok{(}\DecValTok{3}\NormalTok{), }\DecValTok{4}\NormalTok{)}
+\NormalTok{numbs}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 1 2 3 1 2 3 1 2 3 1 2 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{4} \SpecialCharTok{\%notin\%}\NormalTok{ numbs}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\hypertarget{logic-statements}{%
+\chapter{Logic statements}\label{logic-statements}}
+
+TRUE vs FALSE
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ConstantTok{TRUE} \SpecialCharTok{==} \ConstantTok{TRUE}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(}\ConstantTok{FALSE} \SpecialCharTok{==} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{==} \ConstantTok{FALSE}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{6}\SpecialCharTok{==}\DecValTok{7}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{6}\SpecialCharTok{\textless{}=}\DecValTok{6}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{4} \SpecialCharTok{!=} \DecValTok{5}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\SpecialCharTok{!}\NormalTok{(}\DecValTok{5} \SpecialCharTok{==} \DecValTok{71}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ConstantTok{TRUE} \SpecialCharTok{\&} \ConstantTok{TRUE}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ConstantTok{FALSE} \SpecialCharTok{\&} \ConstantTok{FALSE}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ConstantTok{TRUE} \SpecialCharTok{\&} \FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  TRUE FALSE FALSE
+\end{verbatim}
+
+equivalent statement as
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{\&} \FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  TRUE FALSE FALSE
+\end{verbatim}
+
+\hypertarget{be-careful}{%
+\chapter{be careful}\label{be-careful}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ConstantTok{TRUE} \SpecialCharTok{\&\&} \FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+In this case, the left operand is only evaluated with the first member
+of the right operand (the vector). The rest of the elements in the
+vector aren't evaluated at all in this expression.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ConstantTok{TRUE} \SpecialCharTok{|} \ConstantTok{FALSE}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ConstantTok{TRUE} \SpecialCharTok{|} \FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE TRUE TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ConstantTok{TRUE} \SpecialCharTok{||} \FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ConstantTok{FALSE} \SpecialCharTok{\&\&} \DecValTok{6} \SpecialCharTok{\textgreater{}=} \DecValTok{6} \SpecialCharTok{||} \DecValTok{7} \SpecialCharTok{\textgreater{}=} \DecValTok{8} \SpecialCharTok{||} \DecValTok{50} \SpecialCharTok{\textless{}=} \FloatTok{49.5}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\SpecialCharTok{!}\NormalTok{(}\DecValTok{8} \SpecialCharTok{\textgreater{}} \DecValTok{4}\NormalTok{) }\SpecialCharTok{||}  \DecValTok{5} \SpecialCharTok{==} \FloatTok{5.0} \SpecialCharTok{\&\&} \FloatTok{7.8} \SpecialCharTok{\textgreater{}=} \FloatTok{7.79}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ConstantTok{TRUE} \SpecialCharTok{\&\&} \ConstantTok{FALSE} \SpecialCharTok{||} \DecValTok{9} \SpecialCharTok{\textgreater{}=} \DecValTok{4} \SpecialCharTok{\&\&} \DecValTok{3} \SpecialCharTok{\textless{}} \DecValTok{6}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FloatTok{99.99} \SpecialCharTok{\textgreater{}} \DecValTok{100} \SpecialCharTok{||} \DecValTok{45} \SpecialCharTok{\textless{}} \FloatTok{7.3} \SpecialCharTok{||} \DecValTok{4} \SpecialCharTok{!=} \FloatTok{4.0}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{isTRUE}\NormalTok{(}\DecValTok{6}\SpecialCharTok{\textgreater{}}\DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{identical}\NormalTok{(}\StringTok{\textquotesingle{}twins\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}twins\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+The xor() function stands for exclusive OR. If one argument evaluates to TRUE and one argument evaluates to FALSE, then this function will return TRUE, otherwise it will return FALSE.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{xor}\NormalTok{(}\DecValTok{5} \SpecialCharTok{==} \DecValTok{6}\NormalTok{, }\SpecialCharTok{!}\ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{xor}\NormalTok{(T, T)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{xor}\NormalTok{(F, F)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{xor}\NormalTok{(}\FunctionTok{identical}\NormalTok{(xor, }\StringTok{\textquotesingle{}xor\textquotesingle{}}\NormalTok{), }\DecValTok{7} \SpecialCharTok{==} \FloatTok{7.0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{xor}\NormalTok{(}\DecValTok{4} \SpecialCharTok{\textgreater{}=} \DecValTok{9}\NormalTok{, }\DecValTok{8} \SpecialCharTok{!=} \FloatTok{8.0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ints }\OtherTok{\textless{}{-}} \FunctionTok{sample}\NormalTok{(}\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ints }\SpecialCharTok{\textgreater{}} \DecValTok{5}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]  TRUE FALSE FALSE FALSE  TRUE  TRUE  TRUE FALSE FALSE  TRUE
+\end{verbatim}
+
+The which() function takes a logical vector as an argument and returns the indices of the vector that are TRUE.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{which}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}}\NormalTok{ ints}\SpecialCharTok{\textgreater{}}\DecValTok{7}
+
+\FunctionTok{which}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  5  6 10
+\end{verbatim}
+
+The any() function will return TRUE if one or more of the elements in the logical vector is TRUE.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{any}\NormalTok{(ints}\SpecialCharTok{\textless{}}\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+The all() function will return TRUE if every element in the logical vector is TRUE.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{all}\NormalTok{(ints}\SpecialCharTok{\textgreater{}}\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{any}\NormalTok{(ints }\SpecialCharTok{==} \DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{all}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+  \bibliography{book.bib,packages.bib}
+
+\end{document}

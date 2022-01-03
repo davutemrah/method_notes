@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 3 Create sequence of numbers | R Programming Notes for Data Science</title>
+<meta name="author" content="dea">
+<meta name="description" content="a &lt;- seq(from = 5, to = 14, by = 2) a ## [1] 5 7 9 11 13 # generates integer sequence of length(along.with) seq(along.with = 1:12) ## [1] 1 2 3 4 5 6 7 8 9 10 11 12 seq_along(1:15) ## [1] 1 2 3 4...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Chapter 3 Create sequence of numbers | R Programming Notes for Data Science">
+<meta property="og:type" content="book">
+<meta property="og:description" content="a &lt;- seq(from = 5, to = 14, by = 2) a ## [1] 5 7 9 11 13 # generates integer sequence of length(along.with) seq(along.with = 1:12) ## [1] 1 2 3 4 5 6 7 8 9 10 11 12 seq_along(1:15) ## [1] 1 2 3 4...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 3 Create sequence of numbers | R Programming Notes for Data Science">
+<meta name="twitter:description" content="a &lt;- seq(from = 5, to = 14, by = 2) a ## [1] 5 7 9 11 13 # generates integer sequence of length(along.with) seq(along.with = 1:12) ## [1] 1 2 3 4 5 6 7 8 9 10 11 12 seq_along(1:15) ## [1] 1 2 3 4...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS -->
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">R Programming Notes for Data Science</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Acknowledgement</a></li>
+<li><a class="" href="r-programming.html"><span class="header-section-number">2</span> R Programming</a></li>
+<li><a class="active" href="create-sequence-of-numbers.html"><span class="header-section-number">3</span> Create sequence of numbers</a></li>
+<li><a class="" href="logic-statements.html"><span class="header-section-number">4</span> Logic statements</a></li>
+<li><a class="" href="be-careful.html"><span class="header-section-number">5</span> be careful</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="create-sequence-of-numbers" class="section level1" number="3">
+<h1>
+<span class="header-section-number">3</span> Create sequence of numbers<a class="anchor" aria-label="anchor" href="#create-sequence-of-numbers"><i class="fas fa-link"></i></a>
+</h1>
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">a</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">5</span>, to <span class="op">=</span> <span class="fl">14</span>, by <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
+<span class="va">a</span></code></pre></div>
+<pre><code>## [1]  5  7  9 11 13</code></pre>
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># generates integer sequence of length(along.with)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>along.with <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">12</span><span class="op">)</span></code></pre></div>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10 11 12</code></pre>
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">15</span><span class="op">)</span></code></pre></div>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15</code></pre>
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>length.out <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 1 2 3 4</code></pre>
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></code></pre></div>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">a</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">20</span><span class="op">)</span>
+<span class="va">b</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">30</span>, by <span class="op">=</span><span class="fl">2</span><span class="op">)</span></code></pre></div>
+<div id="in" class="section level3" number="3.0.1">
+<h3>
+<span class="header-section-number">3.0.1</span> – %in%<a class="anchor" aria-label="anchor" href="#in"><i class="fas fa-link"></i></a>
+</h3>
+<p>This creates a logical vector, where testing each element in vector “a”
+if ever matches any element in vector “b”</p>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">c</span> <span class="op">&lt;-</span> <span class="va">a</span> <span class="op">%in%</span> <span class="va">b</span>
+<span class="va">c</span></code></pre></div>
+<pre><code>##  [1]  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE</code></pre>
+</div>
+<div id="which" class="section level3" number="3.0.2">
+<h3>
+<span class="header-section-number">3.0.2</span> which()<a class="anchor" aria-label="anchor" href="#which"><i class="fas fa-link"></i></a>
+</h3>
+<p>which(x, arr.ind = FALSE, useNames = TRUE)</p>
+<p>input a logical vector returns location index of true values</p>
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">c</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1]  1  3  5  7  9 11</code></pre>
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">d</span> <span class="op">&lt;-</span> <span class="va">LETTERS</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span>
+<span class="va">d</span></code></pre></div>
+<pre><code>##  [1] "A" "B" "C" "D" "E" "F" "G" "H" "I" "J"</code></pre>
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">e</span> <span class="op">&lt;-</span> <span class="va">LETTERS</span><span class="op">[</span><span class="fl">5</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span>
+<span class="va">e</span></code></pre></div>
+<pre><code>## [1] "E" "F" "G" "H" "I" "J"</code></pre>
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">d</span> <span class="op">%in%</span> <span class="va">e</span></code></pre></div>
+<pre><code>##  [1] FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE</code></pre>
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">d</span> <span class="op">%in%</span> <span class="va">e</span><span class="op">)</span>   <span class="co">## location of TRUE values of vector d (matches vector e)</span></code></pre></div>
+<pre><code>## [1]  5  6  7  8  9 10</code></pre>
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">g</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"c"</span>, <span class="st">"d"</span>, <span class="st">"e"</span>, <span class="st">"k"</span>, <span class="st">"l"</span>, <span class="st">"m"</span><span class="op">)</span>
+<span class="va">h</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"d"</span>, <span class="st">"e"</span>, <span class="st">"d"</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">i</span> <span class="op">&lt;-</span> <span class="va">g</span> <span class="op">%in%</span> <span class="va">h</span>
+<span class="va">i</span></code></pre></div>
+<pre><code>## [1]  TRUE  TRUE  TRUE FALSE FALSE FALSE</code></pre>
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">g</span> <span class="op">==</span> <span class="va">h</span><span class="op">)</span></code></pre></div>
+<pre><code>## integer(0)</code></pre>
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># subsetting property</span>
+
+<span class="va">g</span><span class="op">[</span><span class="va">g</span> <span class="op">%in%</span> <span class="va">h</span><span class="op">]</span></code></pre></div>
+<pre><code>## [1] "c" "d" "e"</code></pre>
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span> <span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">12</span><span class="op">)</span> <span class="op">%%</span> <span class="fl">2</span> <span class="op">==</span> <span class="fl">0</span>, arr.ind <span class="op">=</span> <span class="cn">F</span><span class="op">)</span>   <span class="co">## location in the array (1:12)</span></code></pre></div>
+<pre><code>## [1]  2  4  6  8 10 12</code></pre>
+</div>
+<div id="where-is-the-min-max-first-truefalse" class="section level3" number="3.0.3">
+<h3>
+<span class="header-section-number">3.0.3</span> Where is the min, max, first true/false?<a class="anchor" aria-label="anchor" href="#where-is-the-min-max-first-truefalse"><i class="fas fa-link"></i></a>
+</h3>
+<p>which.min()
+which.max()</p>
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">a</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">4</span>, <span class="fl">1</span>, <span class="fl">7</span>, <span class="fl">9</span>, <span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">9</span>, <span class="cn">NA</span>, <span class="st">"4"</span><span class="op">)</span>
+<span class="va">a</span></code></pre></div>
+<pre><code>##  [1] "2" "4" "1" "7" "9" "1" "3" "5" "9" NA  "4"</code></pre>
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/which.min.html">which.min</a></span><span class="op">(</span><span class="va">a</span> <span class="op">&gt;</span> <span class="fl">4</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/which.min.html">which.max</a></span><span class="op">(</span><span class="va">a</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">a</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.min.html">which.max</a></span><span class="op">(</span><span class="va">a</span><span class="op">)</span><span class="op">]</span></code></pre></div>
+<pre><code>## [1] "9"</code></pre>
+<p><code><a href="https://rdrr.io/r/base/match.html">match(a, b)</a></code></p>
+<p>match: An integer vector giving the position in table of the first match if there is a match, otherwise nomatch.</p>
+<p>min(which(x == a))</p>
+<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">a</span> <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">15</span>
+<span class="va">b</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">20</span>, by<span class="op">=</span><span class="fl">3</span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/base/match.html">match</a></span><span class="op">(</span><span class="va">a</span>, <span class="va">b</span><span class="op">)</span>  <span class="co">## returns location of true values of vector a</span></code></pre></div>
+<pre><code>##  [1]  1 NA NA  2 NA NA  3 NA NA  4 NA NA  5 NA NA</code></pre>
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">a</span> <span class="op">%in%</span> <span class="va">b</span></code></pre></div>
+<pre><code>##  [1]  TRUE FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE
+## [13]  TRUE FALSE FALSE</code></pre>
+<p><code>dataframe</code></p>
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">cars</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></code></pre></div>
+<pre><code>##   speed dist
+## 1     4    2
+## 2     4   10
+## 3     7    4
+## 4     7   22
+## 5     8   16
+## 6     9   10</code></pre>
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># test if value 5 in speed column</span>
+<span class="fl">5</span> <span class="op">%in%</span> <span class="va">df</span><span class="op">$</span><span class="va">speed</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># create a dataframe</span>
+<span class="va">df2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>Type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"fruit"</span>, <span class="st">"fruit"</span>,<span class="st">"fruit"</span>, <span class="st">"veggie"</span>,<span class="st">"veggie"</span><span class="op">)</span>,
+                  Name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"red apple"</span>, <span class="st">"green apple"</span>, <span class="st">"red apple"</span>, <span class="st">"green apple"</span> ,<span class="st">"red apple"</span><span class="op">)</span>, Color <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="st">"red"</span>, <span class="st">"blue"</span>, <span class="st">"yellow"</span>, <span class="st">"red"</span><span class="op">)</span><span class="op">)</span>
+
+<span class="va">df2</span></code></pre></div>
+<pre><code>##     Type        Name  Color
+## 1  fruit   red apple   &lt;NA&gt;
+## 2  fruit green apple    red
+## 3  fruit   red apple   blue
+## 4 veggie green apple yellow
+## 5 veggie   red apple    red</code></pre>
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">df2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html">within</a></span><span class="op">(</span><span class="va">df2</span>, 
+              <span class="op">{</span> <span class="va">newcol</span> <span class="op">=</span> <span class="st">"No"</span>
+              <span class="va">newcol</span><span class="op">[</span><span class="va">Type</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"fruit"</span><span class="op">)</span><span class="op">]</span> <span class="op">=</span> <span class="st">"No"</span>
+              <span class="va">newcol</span><span class="op">[</span><span class="va">Name</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span> <span class="st">"green apple"</span><span class="op">)</span><span class="op">]</span> <span class="op">=</span> <span class="st">"Yes"</span>
+<span class="op">}</span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df2</span>, <span class="fl">3</span><span class="op">)</span></code></pre></div>
+<pre><code>##    Type        Name Color newcol
+## 1 fruit   red apple  &lt;NA&gt;     No
+## 2 fruit green apple   red    Yes
+## 3 fruit   red apple  blue     No</code></pre>
+<p><code>subsetting</code></p>
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></code></pre></div>
+<pre><code>## 
+## Attaching package: 'dplyr'</code></pre>
+<pre><code>## The following objects are masked from 'package:stats':
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">df3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"home"</span>, <span class="st">"veggie"</span>, <span class="st">"fruit"</span><span class="op">)</span>
+
+<span class="va">df2</span> <span class="op">%&gt;%</span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">df2</span><span class="op">$</span><span class="va">Type</span> <span class="op">%in%</span> <span class="va">df3</span><span class="op">)</span></code></pre></div>
+<pre><code>##     Type        Name  Color newcol
+## 1  fruit   red apple   &lt;NA&gt;     No
+## 2  fruit green apple    red    Yes
+## 3  fruit   red apple   blue     No
+## 4 veggie green apple yellow    Yes
+## 5 veggie   red apple    red   &lt;NA&gt;</code></pre>
+<p><code>dropping columns</code></p>
+<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">df2</span><span class="op">[</span>, <span class="op">!</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">df2</span><span class="op">)</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Name"</span>, <span class="st">"Color"</span><span class="op">)</span><span class="op">)</span> <span class="op">]</span></code></pre></div>
+<pre><code>##     Type newcol
+## 1  fruit     No
+## 2  fruit    Yes
+## 3  fruit     No
+## 4 veggie    Yes
+## 5 veggie   &lt;NA&gt;</code></pre>
+<p><code>selecting columns</code></p>
+<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">df2</span><span class="op">[</span>, <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">df2</span><span class="op">)</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Name"</span>, <span class="st">"Color"</span><span class="op">)</span><span class="op">)</span> <span class="op">]</span></code></pre></div>
+<pre><code>##          Name  Color
+## 1   red apple   &lt;NA&gt;
+## 2 green apple    red
+## 3   red apple   blue
+## 4 green apple yellow
+## 5   red apple    red</code></pre>
+<p><code>creating custom operator</code></p>
+<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">`%notin%`</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/funprog.html">Negate</a></span><span class="op">(</span><span class="va">`%in%`</span><span class="op">)</span>
+
+<span class="va">numbs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span>, <span class="fl">4</span><span class="op">)</span>
+<span class="va">numbs</span></code></pre></div>
+<pre><code>##  [1] 1 2 3 1 2 3 1 2 3 1 2 3</code></pre>
+<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fl">4</span> <span class="op">%notin%</span> <span class="va">numbs</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="r-programming.html"><span class="header-section-number">2</span> R Programming</a></div>
+<div class="next"><a href="logic-statements.html"><span class="header-section-number">4</span> Logic statements</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav"><li>
+<a class="nav-link" href="#create-sequence-of-numbers"><span class="header-section-number">3</span> Create sequence of numbers</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#in"><span class="header-section-number">3.0.1</span> – %in%</a></li>
+<li><a class="nav-link" href="#which"><span class="header-section-number">3.0.2</span> which()</a></li>
+<li><a class="nav-link" href="#where-is-the-min-max-first-truefalse"><span class="header-section-number">3.0.3</span> Where is the min, max, first true/false?</a></li>
+</ul>
+</li></ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>R Programming Notes for Data Science</strong>" was written by dea. It was last built on 2021-12-30.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>
