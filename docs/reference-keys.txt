@@ -1,2 +1,4 @@
 acknowledgement
 hc3
+cross-validation
+k-fold-cross-validation
